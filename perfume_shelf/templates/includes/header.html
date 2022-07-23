@@ -1,0 +1,32 @@
+<header>
+  {% load static %}
+
+    <nav class="navbar navbar-light" style="background-color: #718fa7">
+      <div class="container">
+        
+        
+
+        {% with request.resolver_match.view_name as view_name %}  
+          <ul class="nav nav-pills">
+            <li>
+              <h1 class="nav-item"><a id="logo-font" href="/">Railey H.'s perfumes</a></h1>
+            </li>
+            {% if user.is_authenticated %}
+              <li class="nav-item navbar-right">
+                <a href="{% url 'logout' %}" class="header-menu"><span class="glyphicon glyphicon-off"></span></a>
+              </li>
+              <li class="nav-item navbar-right"> 
+                <a href="{% url 'perfumes:perfume_create' %}" class="header-menu"><span class="glyphicon glyphicon-plus"></span></a>
+              </li>
+            {% else %}
+              <li class="nav-item navbar-right">
+                <a href="{% url 'login' %}" class="header-menu"><span class="glyphicon glyphicon-off"></span></a>
+              </li>
+            {% endif %}
+          </ul>
+        {% endwith %}
+
+
+      </div>
+    </nav>
+  </header>
