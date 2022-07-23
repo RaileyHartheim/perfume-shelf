@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Войти{% endblock %}
+
+
+{% block content %}
+  {% if form.errors %}
+    {% for field in form %}
+      {% for error in field.errors %}
+        <div class="alert alert-danger">
+          {{ error|escape }}
+        </div>
+      {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+      <div class="alert alert-danger">
+        {{ error|escape }}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <form method="post" action="{% url 'login' %}">
+  {% csrf_token %}
+    <table>
+    <tr>
+      <td>{{ form.username.label_tag }}</td>
+      <td>{{ form.username }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.password.label_tag }}</td>
+      <td>{{ form.password }}</td>
+    </tr>
+    </table>
+
+    <input type="submit" value="login"/>
+    <input type="hidden" name="next" value="{{ next }}"/>
+  </form>
+{% endblock %}

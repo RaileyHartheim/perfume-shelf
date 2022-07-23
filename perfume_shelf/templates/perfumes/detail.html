@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ perfume.brand }} – {{ perfume.perfume_name }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="row mt-container">
+    <aside class="col-4 col-md-4">
+      <img class="card-img my-2 img-rounded"src="{{ perfume.image_url }}">
+      <div class="text-center distant">
+        <p>
+        {% if user.is_authenticated %}
+          <a class="btn btn-primary text-center" href="{% url 'perfumes:perfume_edit' perfume_id=perfume.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+          <a class="btn btn-primary text-center" href="{% url 'perfumes:perfume_delete' perfume_id=perfume.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+        {% endif %}
+      </p>
+      </div>
+    </aside>
+    
+    <article class="col-8 col-md-5">
+      <p>
+      Название: {{ perfume.perfume_name }}
+      </p>
+      <p>
+        Бренд: {{ perfume.brand }}
+      </p>
+      <p>
+        Парфюмерное семейство: {{ perfume.get_perfume_group_display }}
+      </p>
+      <p>
+        Применение: {{ perfume.get_usage_display }}
+      </p>
+      <p>
+        Сезонность использования: {{ perfume.get_season_display }}
+      </p>
+      <p>
+        Для кого предназначен: {{ perfume.get_gender_display }}
+      </p>
+      <p>
+        Верхние ноты: {{ perfume.top_notes }}
+      </p>
+      <p>
+        Средние ноты: {{ perfume.middle_notes }}
+      </p>
+      <p>
+        Ноты сердца: {{ perfume.base_notes }}
+      </p>
+    </article>
+  </div>
+
+{% endblock %}
