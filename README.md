@@ -44,7 +44,8 @@ python manage.py runserver
 * Add more fields to the perfume model
 * Add search by name/brand (optional: perfume group/seasons/gender/etc)
 * Create or use existing tag system for notes
+* Slugify brand and perfume name for link readability
 * Use parcing for semi-automatic form filling  
 
 ### Author of project
-Yulia Kazhaeva - [GitHub](https://github.com/RaileyHartheim)
+[Yulia Kazhaeva (Railey Hartheim)](https://github.com/RaileyHartheim)
