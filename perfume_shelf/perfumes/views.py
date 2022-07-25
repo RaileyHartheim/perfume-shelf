@@ -46,7 +46,7 @@ def perfume_edit(request, perfume_id):
     )
     if form.is_valid():
         perfume.save()
-        return redirect('perfumes:perfume_detail', pk=perfume_id)
+        return redirect('perfumes:perfume_detail', perfume_id=perfume_id)
     context = {
         'form': form,
         'perfume': perfume,
