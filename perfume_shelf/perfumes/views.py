@@ -3,8 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import PerfumeForm
-from .models import Perfume
+from .forms import CommentForm, PerfumeForm
+from .models import Comment, Perfume
 
 
 def index(request):
@@ -20,8 +20,12 @@ def index(request):
 
 def perfume_detail(request, perfume_id):
     perfume = get_object_or_404(Perfume, pk=perfume_id)
+    form = CommentForm()
+    perfume_comments = perfume.comments.all()
     context = {
-        'perfume': perfume
+        'perfume': perfume,
+        'form': form,
+        'perfume_comments': perfume_comments
     }
     return render(request, 'perfumes/detail.html', context)
 
@@ -60,3 +64,21 @@ def perfume_delete(request, perfume_id):
     perfume = get_object_or_404(Perfume, pk=perfume_id)
     perfume.delete()
     return redirect('perfumes:index')
+
+
+@login_required
+def comment_add(request, perfume_id):
+    perfume = get_object_or_404(Perfume, pk=perfume_id)
+    form = CommentForm(request.POST or None)
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.perfume = perfume
+        comment.save()
+    return redirect('perfumes:perfume_detail', perfume_id=perfume_id)
+
+
+@login_required
+def comment_delete(request, perfume_id, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+    comment.delete()
+    return redirect('perfumes:perfume_detail', perfume_id=perfume_id)
