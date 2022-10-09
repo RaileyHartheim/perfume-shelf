@@ -1,4 +1,4 @@
-# perfume_shelf
+# Railey Hartheim's perfume shelf
 Personal web application for creating perfumes database and making some notes
 
 ### Technologies
@@ -37,10 +37,10 @@ python manage.py runserver
 
 ### Functionallity
 * Create/edit/delete new perfume record
-* Login/logout  
+* Login/logout
+* Add comments
 
 ### Todo list
-* Add comments
 * Add more fields to the perfume model
 * Add search by name/brand (optional: perfume group/seasons/gender/etc)
 * Create or use existing tag system for notes
