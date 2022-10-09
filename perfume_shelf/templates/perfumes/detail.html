@@ -20,33 +20,35 @@
     </aside>
     
     <article class="col-8 col-md-5">
-      <p>
-      Название: {{ perfume.perfume_name }}
-      </p>
-      <p>
-        Бренд: {{ perfume.brand }}
-      </p>
-      <p>
-        Парфюмерное семейство: {{ perfume.get_perfume_group_display }}
-      </p>
-      <p>
-        Применение: {{ perfume.get_usage_display }}
-      </p>
-      <p>
-        Сезонность использования: {{ perfume.get_season_display }}
-      </p>
-      <p>
-        Для кого предназначен: {{ perfume.get_gender_display }}
-      </p>
-      <p>
-        Верхние ноты: {{ perfume.top_notes }}
-      </p>
-      <p>
-        Средние ноты: {{ perfume.middle_notes }}
-      </p>
-      <p>
-        Ноты сердца: {{ perfume.base_notes }}
-      </p>
+      <div class="container-fluid">
+        <p>
+        Название: {{ perfume.perfume_name }}
+        </p>
+        <p>
+          Бренд: {{ perfume.brand }}
+        </p>
+        <p>
+          Парфюмерное семейство: {{ perfume.get_perfume_group_display }}
+        </p>
+        <p>
+          Применение: {{ perfume.get_usage_display }}
+        </p>
+        <p>
+          Сезонность использования: {{ perfume.get_season_display }}
+        </p>
+        <p>
+          Для кого предназначен: {{ perfume.get_gender_display }}
+        </p>
+        <p>
+          Верхние ноты: {{ perfume.top_notes }}
+        </p>
+        <p>
+          Средние ноты: {{ perfume.middle_notes }}
+        </p>
+        <p>
+          Ноты сердца: {{ perfume.base_notes }}
+        </p>
+      </div>
 
       {% include 'perfumes/includes/comments.html' %}
     </article>
