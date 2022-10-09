@@ -1,5 +1,5 @@
 from django import forms
-from .models import Perfume
+from .models import Comment, Perfume
 
 
 class PerfumeForm(forms.ModelForm):
@@ -18,3 +18,10 @@ class PerfumeForm(forms.ModelForm):
             'middle_notes',
             'base_notes'
         ]
+
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ['text']

@@ -72,3 +72,25 @@ class Perfume(models.Model):
 
     def __str__(self):
         return f'{self.brand} — {self.perfume_name}'
+
+
+class Comment(models.Model):
+    perfume = models.ForeignKey(
+        Perfume,
+        on_delete=models.CASCADE,
+        related_name='comments',
+        verbose_name='Парфюм'
+    )
+    text = models.TextField(
+        verbose_name='Заметка',
+        help_text='Здесь можно ввести текст заметки'
+    )
+    created = models.DateTimeField(
+        verbose_name='Дата написания заметки',
+        auto_now_add=True
+    )
+
+    class Meta:
+        ordering = ('created',)
+        verbose_name = 'Заметка'
+        verbose_name_plural = 'Заметки'
