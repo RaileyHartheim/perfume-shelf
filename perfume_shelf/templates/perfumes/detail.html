@@ -8,7 +8,7 @@
 
   <div class="row mt-container">
     <aside class="col-4 col-md-4">
-      <img class="card-img my-2 img-rounded"src="{{ perfume.image_url }}">
+      <img class="card-img center-block my-2 img-rounded"src="{{ perfume.image_url }}">
       <div class="text-center distant">
         <p>
         {% if user.is_authenticated %}
@@ -52,8 +52,6 @@
 
       {% include 'perfumes/includes/comments.html' %}
     </article>
-
-    
 
   </div>
 
