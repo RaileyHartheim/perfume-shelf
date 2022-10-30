@@ -38,11 +38,13 @@ python manage.py runserver
 ### Functionallity
 * Create/edit/delete new perfume record
 * Login/logout
-* Add comments
+* Add/delete comments to perfume records
+* Search perfume by name or brand
 
 ### Todo list
-* Add more fields to the perfume model
-* Add search by name/brand (optional: perfume group/seasons/gender/etc)
+* Add more fields to the perfume model (have it/had it/etc)
+* Make desigh more mobile-friendly
+* Add search by perfume group/seasons/gender/etc (advanced search)
 * Create or use existing tag system for notes
 * Slugify brand and perfume name for link readability
 * Use parcing for semi-automatic form filling  

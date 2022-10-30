@@ -8,9 +8,13 @@
 
   <div class="container-fluid">
     <div class="center-block text-center mt-container">
+      {% if search %}
+        Найдено по запросу: {{ is_found }}
+      {% endif %}
+
       {% for perfume in page_obj %}
         {% if forloop.first %}<div class="row text-center">{% endif %}
-        <div class="col-xs-3 col-sm-3 col-md-4">
+        <div class="col-xs-6 col-sm-6 col-md-4">
           <div class="perfume-items distant">
             <img class="card-img my-2 mini-img"src="{{ perfume.image_url }}">
               <p>{{ perfume.brand }}</p>
