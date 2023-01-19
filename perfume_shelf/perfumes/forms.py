@@ -16,7 +16,11 @@ class PerfumeForm(forms.ModelForm):
             'image_url',
             'top_notes',
             'middle_notes',
-            'base_notes'
+            'base_notes',
+            'have_it',
+            'had_it',
+            'want_it',
+            'test_it'
         ]
 
 
