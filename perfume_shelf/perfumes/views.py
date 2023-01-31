@@ -1,42 +1,28 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator
-from django.db.models import Q
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 
+from .filters import PerfumeFilter
 from .forms import CommentForm, PerfumeForm
 from .models import Comment, Perfume
 
 
 def index(request):
-    all_perfume = Perfume.objects.all()
-    paginator = Paginator(all_perfume, settings.ELEMENTS_PER_PAGE)
+    perfume_filter = PerfumeFilter(request.GET, queryset=Perfume.objects.all())
+    paginator = Paginator(perfume_filter.qs, settings.ELEMENTS_PER_PAGE)
     page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    try:
+        page_obj = paginator.page(page_number)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+
     context = {
         'page_obj': page_obj,
+        'filter': perfume_filter,
         'search': False
-    }
-    return render(request, 'perfumes/index.html', context)
-
-
-def basic_search(request):
-    all_perfume = []
-    if request.method == 'GET':
-        query = request.GET.get('search')
-        if query == '':
-            query = 'None'
-        all_perfume = Perfume.objects.filter(
-            Q(perfume_name__icontains=query) | Q(brand__icontains=query))
-        is_found = all_perfume.count()
-        paginator = Paginator(all_perfume, settings.ELEMENTS_PER_PAGE)
-        page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
-    context = {
-        'query': query,
-        'page_obj': page_obj,
-        'is_found': is_found,
-        'search': True
     }
     return render(request, 'perfumes/index.html', context)
 

@@ -39,14 +39,13 @@ python manage.py runserver
 * Create/edit/delete new perfume record
 * Login/logout
 * Add/delete comments to perfume records
-* Search perfume by name or brand
+* Search perfume by name or brand/perfume group/seasons/gender/etc
 
 ### Todo list
-* Make desigh more mobile-friendly
-* Add search by perfume group/seasons/gender/etc (advanced search)
+* Make desigh more accurate and mobile-friendly
 * Create or use existing tag system for notes
 * Slugify brand and perfume name for link readability
-* Use parcing for semi-automatic form filling  
+* Use parcing for semi-automatic form filling
 
 ### Author of project
 [Yulia Kazhaeva (Railey Hartheim)](https://github.com/RaileyHartheim)
