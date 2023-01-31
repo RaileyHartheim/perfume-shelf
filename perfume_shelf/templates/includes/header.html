@@ -16,14 +16,6 @@
               <li class="nav-item navbar-right header-menu"> 
                 <a title="Добавить парфюм" href="{% url 'perfumes:perfume_create' %}" class="header-menu"><span class="glyphicon glyphicon-plus"></span></a>
               </li>
-              <li class="nav-item navbar-form navbar-right" style="padding-right: 0px;padding-left: 0px; vertical-align: middle;"> 
-                <form action="{% url 'perfumes:basic_search' %}" class="form-horizontal header-menu header-form" method="get">
-                  <div class="form-group">
-                    <button title="Найти" type="submit" class="btn text-center header-menu btn-transparent"><span class="glyphicon glyphicon-search"></span></button>
-                    <input class="form-control col-auto" placeholder="Найти по названию/бренду" type="search" name="search">
-                  </div>
-                </form>
-              </li>
             {% else %}
               <li class="nav-item navbar-right">
                 <a title="Войти в аккаунт" href="{% url 'login' %}" class="header-menu"><span class="glyphicon glyphicon-off"></span></a>
