@@ -42,7 +42,6 @@ python manage.py runserver
 * Search perfume by name or brand
 
 ### Todo list
-* Add more fields to the perfume model (have it/had it/etc)
 * Make desigh more mobile-friendly
 * Add search by perfume group/seasons/gender/etc (advanced search)
 * Create or use existing tag system for notes

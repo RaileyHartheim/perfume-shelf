@@ -61,6 +61,22 @@ class Perfume(models.Model):
         verbose_name='Ссылка на изображение',
         default='/static/img/defaultimage.jpg'
     )
+    have_it = models.BooleanField(
+        verbose_name='Есть',
+        default=False
+    )
+    had_it = models.BooleanField(
+        verbose_name='Был',
+        default=False
+    )
+    want_it = models.BooleanField(
+        verbose_name='Хочу приобрести',
+        default=False
+    )
+    test_it = models.BooleanField(
+        verbose_name='Нужно попробовать',
+        default=False
+    )
 
     class Meta:
         constraints = [

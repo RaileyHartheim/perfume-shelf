@@ -22,6 +22,34 @@
     <article class="col-8 col-md-5">
       <div class="container-fluid">
         <p>
+          {% if perfume.have_it %}
+            <span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span>
+          {% else %}
+            <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
+          {% endif %}
+          Есть
+          {% if perfume.had_it %}
+            <span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span>
+          {% else %}
+            <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
+          {% endif %}
+          Был
+          {% if perfume.want_it %}
+            <span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span>
+          {% else %}
+            <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
+          {% endif %}
+          Хочу
+        </p>
+        <p>
+          {% if perfume.test_it %}
+            <span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span>
+          {% else %}
+            <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
+          {% endif %}
+          Надо попробовать
+        </p>
+        <p>
         Название: {{ perfume.perfume_name }}
         </p>
         <p>
