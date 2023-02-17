@@ -3,7 +3,7 @@ Personal web application for creating perfumes database and making some notes
 
 ### Technologies
 * [Python: 3.8.10](https://www.python.org/)
-* [Django: 2.2.21](https://www.djangoproject.com/)
+* [Django: 3.2.18](https://www.djangoproject.com/)
 * [Bootstrap v3.3.7](https://getbootstrap.com/)
 
 ### Getting Started
