@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.text import slugify
+
 from .choices import (
     GENDER_CHOICES,
     PERFUME_GROUP_CHOICES,
@@ -77,6 +79,10 @@ class Perfume(models.Model):
         verbose_name='Нужно попробовать',
         default=False
     )
+    slug = models.SlugField(
+        verbose_name='Название для ссылки',
+        default='new-perfume'
+    )
 
     class Meta:
         constraints = [
@@ -88,6 +94,11 @@ class Perfume(models.Model):
 
     def __str__(self):
         return f'{self.brand} — {self.perfume_name}'
+
+    def save(self, *args, **kwargs):
+        slug_value = self.brand + ' ' + self.perfume_name
+        self.slug = slugify(slug_value, allow_unicode=True)
+        super().save(*args, **kwargs)
 
 
 class Comment(models.Model):

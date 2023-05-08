@@ -27,8 +27,8 @@ def index(request):
     return render(request, 'perfumes/index.html', context)
 
 
-def perfume_detail(request, perfume_id):
-    perfume = get_object_or_404(Perfume, pk=perfume_id)
+def perfume_detail(request, slug):
+    perfume = get_object_or_404(Perfume, slug=slug)
     form = CommentForm()
     perfume_comments = perfume.comments.all()
     context = {
@@ -51,15 +51,15 @@ def perfume_create(request):
 
 
 @login_required
-def perfume_edit(request, perfume_id):
-    perfume = get_object_or_404(Perfume, pk=perfume_id)
+def perfume_edit(request, slug):
+    perfume = get_object_or_404(Perfume, slug=slug)
     form = PerfumeForm(
         request.POST or None,
         instance=perfume
     )
     if form.is_valid():
         perfume.save()
-        return redirect('perfumes:perfume_detail', perfume_id=perfume_id)
+        return redirect('perfumes:perfume_detail', slug=perfume.slug)
     context = {
         'form': form,
         'perfume': perfume,
@@ -69,25 +69,26 @@ def perfume_edit(request, perfume_id):
 
 
 @login_required
-def perfume_delete(request, perfume_id):
-    perfume = get_object_or_404(Perfume, pk=perfume_id)
+def perfume_delete(request, slug):
+    perfume = get_object_or_404(Perfume, slug=slug)
     perfume.delete()
     return redirect('perfumes:index')
 
 
 @login_required
-def comment_add(request, perfume_id):
-    perfume = get_object_or_404(Perfume, pk=perfume_id)
+def comment_add(request, slug):
+    perfume = get_object_or_404(Perfume, slug=slug)
     form = CommentForm(request.POST or None)
     if form.is_valid():
         comment = form.save(commit=False)
         comment.perfume = perfume
         comment.save()
-    return redirect('perfumes:perfume_detail', perfume_id=perfume_id)
+    return redirect('perfumes:perfume_detail', slug=perfume.slug)
 
 
 @login_required
-def comment_delete(request, perfume_id, comment_id):
+def comment_delete(request, slug, comment_id):
     comment = get_object_or_404(Comment, pk=comment_id)
+    # perfume_slug = comment.perfume.slug
     comment.delete()
-    return redirect('perfumes:perfume_detail', perfume_id=perfume_id)
+    return redirect('perfumes:perfume_detail', slug=slug)

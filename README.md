@@ -40,11 +40,11 @@ python manage.py runserver
 * Login/logout
 * Add/delete comments to perfume records
 * Search perfume by name or brand/perfume group/seasons/gender/etc
+* Slugify brand and perfume name for link readability
 
 ### Todo list
 * Make desigh more accurate and mobile-friendly
 * Create or use existing tag system for notes
-* Slugify brand and perfume name for link readability
 * Use parcing for semi-automatic form filling
 
 ### Author of project

@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
   <h3>Добавить комментарий</h3>
-  <form method="post" action={% url 'perfumes:comment_add' perfume.id %}>
+  <form method="post" action={% url 'perfumes:comment_add' perfume.slug %}>
     {% csrf_token %}
     <div class="form-group">
       {{ form.text|addclass:"form-control" }}
@@ -21,7 +21,7 @@
 {% for comment in perfume_comments %}
   <div class="media">
     {% if user.is_authenticated %}
-      <p><a class="btn btn-primary btn-xs text-center" href="{% url 'perfumes:comment_delete' perfume_id=comment.perfume.pk comment_id=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a></p>
+      <p><a class="btn btn-primary btn-xs text-center" href="{% url 'perfumes:comment_delete' slug=comment.perfume.slug comment_id=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a></p>
     {% endif %}
     <h4>{{ comment.created }}</h4>
     <p>
