@@ -33,7 +33,7 @@
             <div class="perfume-items distant">
               <img class="card-img my-2 mini-img"src="{{ perfume.image_url }}">
                 <p>{{ perfume.brand }}</p>
-                <a href="{% url 'perfumes:perfume_detail' perfume_id=perfume.pk %}">
+                <a href="{% url 'perfumes:perfume_detail' slug=perfume.slug %}">
                   <p> {{ perfume.perfume_name }} </p>
                 </a>
             </div>
